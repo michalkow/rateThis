@@ -176,12 +176,20 @@
 				if(rating>root.cvalue) {
 					for(i=0;i<from;i++) {
 						if(!$this.next().find('.rateThis-obj').eq(i).hasClass('rateThis-0')) {
-							$this.next().find('.rateThis-obj').eq(i).find('img').attr('src', root.fullImg);
+							if(root.disabled){
+								$this.next().find('.rateThis-obj').eq(i).find('img').attr('src', root.disabledFullImg);
+							} else {
+								$this.next().find('.rateThis-obj').eq(i).find('img').attr('src', root.fullImg);
+							}
 						}	
 					}
 				} else if(root.cvalue>=rating) {
-					for(i=from;i<=root.max;i++) {;
-						$this.next().find('.rateThis-obj').eq(i).find('img').attr('src', root.emptyImg);
+					for(i=from;i<=root.max;i++) {
+						if(root.disabled){
+							$this.next().find('.rateThis-obj').eq(i).find('img').attr('src', root.disabledEmptyImg);
+						} else {
+							$this.next().find('.rateThis-obj').eq(i).find('img').attr('src', root.emptyImg);
+						}
 					}
 				}
 				root.cvalue=rating;
