@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>rateThis.js</title>
+	<style>
+		.rateThis-obj {
+			margin-right: 2px;
+		}
+		
+		.rate-example {
+			margin-top:30px;
+		}
+		
+		img {
+			border:none;
+		}
+	</style>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script src="rateThis.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    jQuery(document).ready(function(){ 
+	
+		$('#ratetest').rateThis({disabledFullImg: "full-disabled.png", disabledEmptyImg: "empty-disabled.png"});
+		$('#disable').click(function() { $('#ratetest').rateThis('disable'); });
+		$('#enable').click(function() { $('#ratetest').rateThis('enable'); });
+		$('#set').click(function() { 
+			$('#ratetest').val(3);
+			$('#ratetest').rateThis('update');
+		});
+		
+		$('#ratetestz').rateThis({zero:true, max: 10, value: 0, disabledFullImg: "full-disabled.png", disabledEmptyImg: "empty-disabled.png", disabledZeroImg: "zero-disabled.png"});
+		$('#disablez').click(function() { $('#ratetestz').rateThis('disable'); });
+		$('#enablez').click(function() { $('#ratetestz').rateThis('enable'); });
+		$('#setz').click(function() { 
+			$('#ratetestz').val(5);
+			$('#ratetestz').rateThis('update');
+		});
+		
+	});
+	</script>
+</head>
+<body>
+	<div style="width: 960px; margin: auto;">
+		<div class="rate-example">
+			<input name="ratetest" id="ratetest" type="text" />
+			<button id="disable">Disable</button>
+			<button id="enable">Enable</button>
+			<button id="set">Set to 3</button>
+		</div>
+		<div class="rate-example">
+			<input name="ratetestz" id="ratetestz" type="text" />
+			<button id="disablez">Disable</button>
+			<button id="enablez">Enable</button>
+			<button id="setz">Set to 5</button>
+		</div>
+	</div>
+</body>
+</html>
