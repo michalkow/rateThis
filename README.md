@@ -71,7 +71,7 @@ Settable Options
 <td>Name of image file to use for displaying zero rating</td>
 <td>string</td>
 <td>'zero.png'</td>
-</tr>						
+</tr>					
 <tr>
 <td>value</td>
 <td>Default value for rating</td>
@@ -83,6 +83,18 @@ Settable Options
 <td>Max value for rating</td>
 <td>integer</td>
 <td>5</td>
+</tr>	
+<tr>
+<td>hover</td>
+<td>If true, will display image for highlighting current selected rating</td>
+<td>boolean</td>
+<td>true</td>
+</tr>	
+<tr>	
+<td>hoverImg</td>
+<td>Name of image file to use for displaying for highlight</td>
+<td>string</td>
+<td>'hover.png'</td>
 </tr>	
 <tr>	
 <td>disabled</td>

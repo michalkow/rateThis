@@ -11,6 +11,8 @@
 	  zeroImg : 'zero.png',
 	  value : 1,
 	  max: 5,
+	  hover: true,
+	  hoverImg: 'hover.png',
 	  disabled : false,
 	  disabledZeroImg : 'zero.png',
 	  disabledFullImg: 'full.png',
@@ -25,6 +27,8 @@
 			root.disabled=settings.disabled;
 			root.cvalue=settings.value;
 			root.zero=settings.zero;
+			root.hover=settings.hover;
+			root.hoverImg=settings.hoverImg;
 			root.fullImg=settings.fullImg;
 			root.emptyImg=settings.emptyImg;
 			root.zeroImg=settings.zeroImg;
@@ -62,22 +66,32 @@
 			$this.next().find('.rateThis-obj').each(function( index ){
 				if(!root.zero) index++;
 				$(this).on('click', function() { rate( index, 0 ); return false; });
-				$(this).on('mouseenter', function() { rate( index, 2 ); });
-				$(this).on('mouseout', function() { rate( parseInt(root.cvalue), 1) });
+				if(root.hover) {
+					$(this).on('mouseenter', function() { rate( index, 2 ); });
+					$(this).on('mouseout', function() { rate( parseInt(root.cvalue), 1) });
+				}
 			});
 			
 			function rate(rating, hover) {
 				if(!root.disabled) {
-					var from = rating;
-					if(root.zero) from=rating+1;
+					var end = rating;
+					var start = root.cvalue;
+					if(root.zero) {
+						end++;
+						start++;
+					}
 					if(rating>root.cvalue) {
-						for(i=0;i<from;i++) {
+						for(i=start;i<end;i++) {
 							if(!$this.next().find('.rateThis-obj').eq(i).hasClass('rateThis-0')) {
-								$this.next().find('.rateThis-obj').eq(i).find('img').attr('src', root.fullImg);
+								if(hover==2) {
+									$this.next().find('.rateThis-obj').eq(i).find('img').attr('src', root.hoverImg);
+								} else {
+									$this.next().find('.rateThis-obj').eq(i).find('img').attr('src', root.fullImg);
+								}
 							}	
 						}
 					} else if(root.cvalue>=rating && hover<2) {
-						for(i=from;i<=root.max;i++) {
+						for(i=end;i<=root.max;i++) {
 								$this.next().find('.rateThis-obj').eq(i).find('img').attr('src', root.emptyImg);
 						}
 					}
