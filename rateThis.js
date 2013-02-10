@@ -36,7 +36,7 @@
 			root.disabledFullImg=settings.disabledFullImg;
 			root.disabledEmptyImg=settings.disabledEmptyImg;
 			
-			$this.attr('type', 'hidden');
+			$this.css('display', 'none');
 			$this.after('<div class="rateThis"></div>');
 			
 			if(root.disabled) {
@@ -110,7 +110,7 @@
        return this.each(function(){
 				var root = this;
 				var $this=$(this);
-				$this.attr('type', 'text');
+				$this.attr('display', 'block');
 				$this.next().remove();
 				return this;
        });
